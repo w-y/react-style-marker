@@ -4,9 +4,9 @@ React-style-marker is trying to manage inline style on React elements in a diffe
 
 With React-style-marker, inline style will be converted into variables and expressions and you can reuse these variables in the same rule in this system.
 
-- '+', '-', '*', '/', '=', '(', ')' instead of object operations
 - bottom up and composable
 - readable and reusable
+- '+', '-', '*', '/', '=', '(', ')' instead of object operations
 
 ## Installation
 
