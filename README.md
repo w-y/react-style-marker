@@ -57,7 +57,7 @@ The output is both:
 
 Using ';' or '\n' to seperate Multiple expression:
 
-    T("myDiv1=display('block') + width(100) + heigh(100);myDiv2=myDiv1");
+    T("myDiv1=display('block') + width(100) + height(100);myDiv2=myDiv1");
 
 ### Insert
 
