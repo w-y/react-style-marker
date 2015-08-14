@@ -1,0 +1,10 @@
+#
+node_modules
+
+# some special files to ignore
+.DS_Store
+*.iml
+*.ipr
+*.iws
+*.swp
+*.log
