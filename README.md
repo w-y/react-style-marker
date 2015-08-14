@@ -2,7 +2,9 @@
 
 React-style-marker is trying to manage inline style on React elements in a different way. 
 
-- code with '+', '-', '*', '/', '=' instead of object operations
+With React-style-marker, inline style will be converted into variables and expressions and you can reuse these variables in the same rule in this system.
+
+- '+', '-', '*', '/', '=', '(', ')' instead of object operations
 - bottom up and composable
 - readable and reusable
 
@@ -37,7 +39,7 @@ Then you can simply use
     <div style={T('myDiv')}>
     </div>
     
-Using ';' OR '\n' to seperate Multiple expression:
+Using ';' or '\n' to seperate Multiple expression:
 
     T('myDiv1=display(block) + width(100) + heigh(100);myDiv2=myDiv1')
         
@@ -103,7 +105,7 @@ Using '*' to achive composing style with states:
     
     React.render(<Demo />, document.getElementById('example'));
 
-State styles:
+Stateful styles:
     
     var Marker = require('react-style-marker');var I = Marker.insert;
     var T = Marker.trans;
