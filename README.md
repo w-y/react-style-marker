@@ -39,17 +39,17 @@ Which is equal to:
 
 If it has an assign expression, the left side will be assigned value which is the result of the right side expression.
 
-    T('myDiv=display(block) + width(100) + height(100)')
+    T("myDiv=display('block') + width(100) + height(100)")
 
 Then you can simply use:
 
     <div style={T('myDiv')}>
     </div>
 
-Trans returns value the first expression: 
+Trans returns the result of the first expression:
 
-    console.log(T('myDiv=display(block) + width(100) + height(100)'))
-    console.log(T('myDiv'));
+    console.log(T("myDiv=display('block') + width(100) + height(100)"))
+    console.log(T("myDiv"));
 
 The output is both:
 
@@ -57,8 +57,7 @@ The output is both:
 
 Using ';' or '\n' to seperate Multiple expression:
 
-    T('myDiv1=display(block) + width(100) + heigh(100);myDiv2=myDiv1')
-
+    T("myDiv1=display('block') + width(100) + heigh(100);myDiv2=myDiv1");
 
 ### Insert
 
@@ -78,7 +77,7 @@ You can also define style with state:
 Using '*' to achive composing style with states:
 
     <button
-        style={T('myBg*myBgHover', this.state.hover)}
+        style={T("myBg*myBgHover", this.state.hover)}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave} >
     </button>
