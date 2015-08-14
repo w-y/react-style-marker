@@ -1,6 +1,6 @@
 #React-style-marker
 
-React-style-marker is trying to manage inline style on React elements in a different way. 
+React-style-marker is trying to manage inline style on React elements in a different way.
 
 With React-style-marker, inline style will be converted into variables and expressions and you can reuse these variables in the same rule in this system.
 
@@ -11,43 +11,59 @@ With React-style-marker, inline style will be converted into variables and expre
 ## Installation
 
     npm install react-style-marker
-    
+
 ## Usage
 
     var Marker = require('react-style-marker');
     var I = Marker.insert;
     var T = Marker.trans;
-    
+
 ### Trans
 
 Trans translates the react-style-marker string to react inline style object.
 
-    <div style={T("width(100)+height(100)+display('block'))")} >
-    </div>
-    
-Which is equal to 
-    
-    <div style={{width:100,height:100,display:block}}
+    console.log(T("width(100)+height(100)+display('block'))")
+
+The output is:
+
+    { width: 100, height: 100, display: 'block' }
+
+
+    <div style={T("width(100)+height(100)+display('block')")} >
     </div>
 
-If it has an assign expression, the left side will be assigned value which is the result of the right side expression. 
-        
-    T('myDiv=display(block) + width(100) + heigh(100)')
+Which is equal to:
 
-Then you can simply use
-    
+    <div style={{width:100,height:100,display:block}} >
+    </div>
+
+If it has an assign expression, the left side will be assigned value which is the result of the right side expression.
+
+    T('myDiv=display(block) + width(100) + height(100)')
+
+Then you can simply use:
+
     <div style={T('myDiv')}>
     </div>
-    
+
+Trans returns value the first expression: 
+
+    console.log(T('myDiv=display(block) + width(100) + height(100)'))
+    console.log(T('myDiv'));
+
+The output is both:
+
+    { display: 'block', width: 100, height: 100 }
+
 Using ';' or '\n' to seperate Multiple expression:
 
     T('myDiv1=display(block) + width(100) + heigh(100);myDiv2=myDiv1')
-        
-    
+
+
 ### Insert
 
 Parameters: alias, key, value, [priority, state](optional)
-    
+
     I('myBg', 'background', 'grey');
 
 Then you define style {myBg:background('grey')}
@@ -56,17 +72,17 @@ Then you define style {myBg:background('grey')}
     </div>
 
 You can also define style with state:
-    
+
     I('myBgHover, 'background', 'red', 1, 'hover');
 
 Using '*' to achive composing style with states:
-    
-    <button 
+
+    <button
         style={T('myBg*myBgHover', this.state.hover)}
-        onMouseEnter={this.handleMouseEnter} 
+        onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave} >
     </button>
-    
+
     handleMouseEnter() {
       this.setState({
         hover: 'hover'
@@ -85,7 +101,7 @@ Using '*' to achive composing style with states:
 
     // you can use custom variable cm as the combination
     // cm = Object.assign({}, {display:'absolute'}, {left:0} ...)
-      
+
     T("cm=display('absolute')+left(0)+right(0)+top(0)+bottom(0)+margin('auto auto auto auto')");
 
     var Demo = React.createClass({
@@ -102,11 +118,11 @@ Using '*' to achive composing style with states:
         )
       }
     });
-    
+
     React.render(<Demo />, document.getElementById('example'));
 
 Stateful styles:
-    
+
     var Marker = require('react-style-marker');var I = Marker.insert;
     var T = Marker.trans;
 
@@ -132,7 +148,7 @@ Stateful styles:
       },
       // '*' make multiple state combined in a single variable
       // Trans has an optional sencond paramter state
-      // Which can filter style value with certain state 
+      // Which can filter style value with certain state
       render: function() {
         return (
          <div>
@@ -142,7 +158,7 @@ Stateful styles:
         )
       }
     });
-    React.render(<Demo />, document.getElementById('example')); 
+    React.render(<Demo />, document.getElementById('example'));
 
 
 ## Live Demo
